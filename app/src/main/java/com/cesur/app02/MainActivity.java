@@ -2,8 +2,10 @@ package com.cesur.app02;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -11,18 +13,18 @@ import android.widget.Switch;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
     private ImageView imagen;
     private Switch mostrarLogo;
 
-    private EditText nuevoAlumno;
-    private Button insertarAlumno;
+    private EditText alumno;
+    private Button comprobar;
     private Spinner listadoAlumnos;
+    private CheckBox checkBox;
+
+    private String alumnoAcomprobar;
 
 
 
@@ -37,16 +39,18 @@ public class MainActivity extends AppCompatActivity {
 
         imagen = (ImageView) findViewById(R.id.imageView);
         mostrarLogo = (Switch) findViewById(R.id.switch1);
-        nuevoAlumno = (EditText) findViewById(R.id.nuevoAlumno);
-        insertarAlumno = (Button) findViewById(R.id.insertarAlumno);
+        alumno = (EditText) findViewById(R.id.comprobarAlumno);
+        comprobar = (Button) findViewById(R.id.comprobar);
         listadoAlumnos = (Spinner) findViewById(R.id.listaAlumnos);
+        checkBox = (CheckBox) findViewById(R.id.checkBox);
+        alumnoAcomprobar="";
 
-        String[] alumnos = new String[10];
-        alumnos[0]="listado vacío";
+        String[] alumnos = {"Pedro","Luis","María","Paula"};
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, alumnos);
         listadoAlumnos.setAdapter(adapter);
 
-        // evento programado directamente.
+        // evento programado directamente
         mostrarLogo.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -60,6 +64,36 @@ public class MainActivity extends AppCompatActivity {
                 }
 
         );
+
+        comprobar.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alumnoAcomprobar = String.valueOf( alumno.getText());
+                    }
+                }
+
+        );
+
+        listadoAlumnos.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (listadoAlumnos.getSelectedItem().toString().equals(alumnoAcomprobar)){
+                            checkBox.setChecked(true);
+                        } else {
+                            checkBox.setChecked(false);
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        checkBox.setChecked(false);
+                    }
+                }
+
+        );
+
 
     }
 }

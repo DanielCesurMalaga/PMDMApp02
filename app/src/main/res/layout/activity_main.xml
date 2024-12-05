@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/principal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -43,26 +43,26 @@
         app:srcCompat="@drawable/cesurlogo" />
 
     <EditText
-        android:id="@+id/nuevoAlumno"
+        android:id="@+id/comprobarAlumno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:ems="10"
         android:inputType="text"
-        android:text="nuevo alumno"
+        android:text="Alumno a comprobar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <Button
-        android:id="@+id/insertarAlumno"
+        android:id="@+id/comprobar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="introducir alumno"
+        android:text="Comprobar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nuevoAlumno" />
+        app:layout_constraintTop_toBottomOf="@+id/comprobarAlumno" />
 
     <Spinner
         android:id="@+id/listaAlumnos"
@@ -71,6 +71,15 @@
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/insertarAlumno" />
+        app:layout_constraintTop_toBottomOf="@+id/comprobar" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Alumno en lista"
+        app:layout_constraintTop_toBottomOf="@+id/listaAlumnos"
+        tools:layout_editor_absoluteX="165dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
